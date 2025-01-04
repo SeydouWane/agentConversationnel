@@ -33,7 +33,7 @@ Ce projet est un **chatbot éducatif** développé avec Flask et OpenAI, capable
 4. **Configurer l'API Key OpenAI :**
     - Créer un fichier `.env` à la racine avec le contenu suivant :
     ```plaintext
-    OPENAI_API_KEY=sk-XXXXXXXXXXXXXXXXXXXXX
+    OPENAI_API_KEY= mettre le clé API sur github n'est pas autorisé
     ```
     ⚠️ **Ne partagez jamais votre clé API publiquement.**
 
