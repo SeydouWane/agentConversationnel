@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatbot Éducatif</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Bienvenue sur le Chatbot Éducatif</h1>
+      <p>Veuillez choisir un module et poser votre question.</p>
+
+      <form id="questionForm">
+        <label for="module">Choisir un module :</label>
+        <select name="module" id="module" onchange="afficherPoints()">
+          <option value="Chap 1">Chapitre 1</option>
+          <option value="Chap 2">Chapitre 2</option>
+          <option value="Chap 3">Chapitre 3</option>
+          <option value="Chap 4">Chapitre 4</option>
+        </select>
+
+        <h3>Points clés de ce chapitre :</h3>
+        <ul id="pointsContainer"></ul>
+
+        <label for="question">Votre question :</label>
+        <input type="text" id="question" required />
+        <button type="submit">Envoyer</button>
+      </form>
+
+      <div id="responseContainer"></div>
+    </div>
+    <!-- Script pour afficher les points clés dès la sélection du module -->
+    <script>
+      async function fetchPoints() {
+        const module = document.getElementById("module").value;
+        const response = await fetch(`/get_points/${module}`);
+        const data = await response.json();
+        document.getElementById(
+          "responseContainer"
+        ).innerHTML = `<p><strong>Points clés :</strong><br> ${data[
+          "Points clés"
+        ].join("<br>")}</p>`;
+      }
+    </script>
+
+    <script>
+      async function afficherPoints() {
+        const module = document.getElementById("module").value;
+        const response = await fetch(`/get_points/${module}`);
+        const data = await response.json();
+        const pointsContainer = document.getElementById("pointsContainer");
+        pointsContainer.innerHTML = "";
+        data["Points clés"].forEach((point) => {
+          const li = document.createElement("li");
+          li.textContent = point;
+          pointsContainer.appendChild(li);
+        });
+      }
+
+      document.getElementById("questionForm").onsubmit = async function (e) {
+        e.preventDefault();
+        const module = document.getElementById("module").value;
+        const question = document.getElementById("question").value;
+
+        const response = await fetch("/ask_question", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ module, question }),
+        });
+        const data = await response.json();
+        document.getElementById(
+          "responseContainer"
+        ).innerHTML = `<p><strong>Réponse :</strong> ${data["Réponse"]}</p>`;
+      };
+    </script>
+  </body>
+</html>
