@@ -81,7 +81,7 @@ Les contributions sont les bienvenues ! Veuillez ouvrir une `issue` ou une `pull
 
 ## 📧 Contact
 - **Développeur** : [Seydou Wane](https://github.com/SeydouWane)
-- **Email** : [seydou@example.com](mailto:papaseydou.wane@unchk.edu.sn)
+- **Email** : [papaseydou.wane@unchk.edu.sn](mailto:papaseydou.wane@unchk.edu.sn)
 
 ---
 
