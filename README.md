@@ -1,6 +1,6 @@
 # Agent Conversationnel
 
-Ce projet est un **chatbot éducatif** développé avec Flask et OpenAI, capable de répondre aux questions des utilisateurs sur des modules de leadership à partir de fichiers PDF.
+Ce projet est un **chatbot éducatif** développé avec Flask et OpenAI, capable de répondre aux questions des utilisateurs sur des modules d'une formation à partir de fichiers PDF.
 
 ## 🚀 Fonctionnalités
 - **Interaction par Chatbot** : Répondre aux questions des utilisateurs sur des modules de cours spécifiques.
